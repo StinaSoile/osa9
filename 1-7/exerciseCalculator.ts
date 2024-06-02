@@ -1,4 +1,4 @@
-interface Evaluation {
+export interface Evaluation {
   periodLength: number;
   trainingDays: number;
   success: boolean;
@@ -40,7 +40,7 @@ export const calculateExercises = (
     target,
     average,
   };
-  console.log(evaluation);
+  // console.log(evaluation);
   return evaluation;
 };
 const d: number = Number(process.argv[2]);
