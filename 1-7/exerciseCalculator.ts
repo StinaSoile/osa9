@@ -8,7 +8,10 @@ interface Evaluation {
   average: number;
 }
 
-const calculateExercises = (dailyHours: number[], goal: number): Evaluation => {
+export const calculateExercises = (
+  dailyHours: number[],
+  goal: number
+): Evaluation => {
   const periodLength = dailyHours.length;
   const trainingDays = dailyHours.filter((d) => d !== 0).length;
   const average =
@@ -28,7 +31,7 @@ const calculateExercises = (dailyHours: number[], goal: number): Evaluation => {
     ratingDescription = "Now we're talking!";
   }
 
-  const eval = {
+  const evaluation = {
     periodLength,
     trainingDays,
     success,
@@ -37,8 +40,8 @@ const calculateExercises = (dailyHours: number[], goal: number): Evaluation => {
     target,
     average,
   };
-  console.log(eval);
-  return eval;
+  console.log(evaluation);
+  return evaluation;
 };
 const d: number = Number(process.argv[2]);
 
