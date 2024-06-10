@@ -21,4 +21,5 @@ export interface Patient {
 //   gender: "male";
 //   occupation: "Cop";
 // }
+export type NewPatient = Omit<Patient, "id">;
 export type NonSensitivePatient = Omit<Patient, "ssn">;
