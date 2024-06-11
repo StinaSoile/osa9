@@ -9,10 +9,15 @@ export interface Patient {
   name: string;
   dateOfBirth: string;
   ssn: string;
-  gender: string;
+  gender: Gender;
   occupation: string;
 }
 
+export enum Gender {
+  Female = "female",
+  Male = "male",
+  Other = "other",
+}
 // {
 //   id: "d2773598-f723-11e9-8f0b-362b9e155667";
 //   name: "Martin Riggs";
