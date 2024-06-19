@@ -8,7 +8,7 @@ export const Content = (props: ContentProps) => {
   return (
     <>
       {props.courseParts.map((part) => (
-        <Part part={part} />
+        <Part key={part.name} part={part} />
       ))}
     </>
   );

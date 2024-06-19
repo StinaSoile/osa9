@@ -32,13 +32,6 @@ router.post("/", (req, res) => {
     }
     res.status(400).send(errMsg);
   }
-  // const { date, weather, visibility, comment } = req.body;
-  // const addedEntry = diaryService.addDiary({
-  //   date,
-  //   weather,
-  //   visibility,
-  //   comment,
-  // });
 });
 
 export default router;
