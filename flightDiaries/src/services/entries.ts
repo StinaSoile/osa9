@@ -26,8 +26,7 @@ const getEntries = async () => {
 //   return response;
 // };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const createEntry = async (entry: any) => {
+const createEntry = async (entry: NewDiaryEntry) => {
   const response = await axios.post<DiaryEntry>(
     "http://localhost:3000/api/diaries",
     entry

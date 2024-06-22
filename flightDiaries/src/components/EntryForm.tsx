@@ -18,10 +18,10 @@ export const EntryForm = (props: NotificationProps) => {
   const handleCreateEntry = async (event: SyntheticEvent) => {
     event.preventDefault();
     try {
-      const newEntry = {
+      const newEntry: NewDiaryEntry = {
         date,
-        visibility,
-        weather,
+        visibility: parseVisibility(visibility),
+        weather: parseWeather(weather),
         comment,
       };
 
@@ -72,17 +72,6 @@ export const EntryForm = (props: NotificationProps) => {
     return visibility;
   };
 
-  // const isDate = (date: string): boolean => {
-  //   return Boolean(Date.parse(date));
-  // };
-
-  // const parseDate = (date: string): string => {
-  //   if (!date || !isDate(date)) {
-  //     throw new Error("Incorrect or missing date: " + date);
-  //   }
-  //   return date;
-  // };
-
   return (
     <>
       <h2>Add new entry</h2>
@@ -91,36 +80,81 @@ export const EntryForm = (props: NotificationProps) => {
           Date:
           <input
             data-testid="date"
-            type="text"
+            type="date"
             placeholder="date"
             value={date}
             name="Date"
             onChange={({ target }) => setDate(target.value)}
           />
         </div>
+        Visibility:
         <div>
-          <label>
-            Visibility:
-            <input
-              data-testid="visibility"
-              type="text"
-              placeholder="visibility"
-              value={visibility}
-              name="Visibility"
-              onChange={({ target }) => setVisibility(target.value)}
-            />
-          </label>
-        </div>
-        <div>
-          Weather:
+          great
           <input
-            data-testid="weather"
-            type="text"
-            placeholder="weather"
-            value={weather}
+            type="radio"
+            checked={visibility === Visibility.Great}
+            name="Visibility"
+            onChange={() => setVisibility(Visibility.Great)}
+          />{" "}
+          good
+          <input
+            type="radio"
+            checked={visibility === Visibility.Good}
+            name="Visibility"
+            onChange={() => setVisibility(Visibility.Good)}
+          />{" "}
+          ok
+          <input
+            type="radio"
+            checked={visibility === Visibility.Ok}
+            name="Visibility"
+            onChange={() => setVisibility(Visibility.Ok)}
+          />{" "}
+          poor
+          <input
+            type="radio"
+            checked={visibility === Visibility.Poor}
+            name="Visibility"
+            onChange={() => setVisibility(Visibility.Poor)}
+          />{" "}
+        </div>
+        Weather:
+        <div>
+          sunny
+          <input
+            type="radio"
+            checked={weather === Weather.Sunny}
             name="Weather"
-            onChange={({ target }) => setWeather(target.value)}
-          />
+            onChange={() => setWeather(Weather.Sunny)}
+          />{" "}
+          rainy
+          <input
+            type="radio"
+            checked={weather === Weather.Rainy}
+            name="Weather"
+            onChange={() => setWeather(Weather.Rainy)}
+          />{" "}
+          cloudy
+          <input
+            type="radio"
+            checked={weather === Weather.Cloudy}
+            name="Weather"
+            onChange={() => setWeather(Weather.Cloudy)}
+          />{" "}
+          stormy
+          <input
+            type="radio"
+            checked={weather === Weather.Stormy}
+            name="Weather"
+            onChange={() => setWeather(Weather.Stormy)}
+          />{" "}
+          windy
+          <input
+            type="radio"
+            checked={weather === Weather.Windy}
+            name="Weather"
+            onChange={() => setWeather(Weather.Windy)}
+          />{" "}
         </div>
         <div>
           Comment:
