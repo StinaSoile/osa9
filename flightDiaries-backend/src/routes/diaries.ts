@@ -30,6 +30,8 @@ router.post("/", (req, res) => {
     if (error instanceof Error) {
       errMsg += "Error: " + error.message;
     }
+    console.log("käykö trycatchissa" + error);
+
     res.status(400).send(errMsg);
   }
 });

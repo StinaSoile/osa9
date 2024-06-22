@@ -21,6 +21,10 @@ export interface DiaryEntry {
   comment: string;
 }
 
+export interface NotificationType {
+  message: string;
+  type: string;
+}
 export type NonSensitiveDiaryEntry = Omit<DiaryEntry, "comment">;
 
 export type NewDiaryEntry = Omit<DiaryEntry, "id">;

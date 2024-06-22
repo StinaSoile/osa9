@@ -5,9 +5,11 @@ export const EntryList = ({ entries }: { entries: DiaryEntry[] }) => {
     <>
       <h2>Diary entries</h2>
       <table>
-        {entries.map((entry) => (
-          <Entry entry={entry} />
-        ))}
+        <tbody>
+          {entries.map((entry) => (
+            <Entry key={entry.id} entry={entry} />
+          ))}
+        </tbody>
       </table>
     </>
   );
