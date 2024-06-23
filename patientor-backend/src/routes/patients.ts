@@ -8,6 +8,11 @@ router.get("/", (_req, res) => {
   res.send(patientService.getPatients());
 });
 
+router.get("/:id", (_req, res) => {
+  const id = _req.params.id;
+  res.send(patientService.getPatient(id));
+});
+
 // router.post("/", (_req, res) => {
 //   res.send("Saving a diary!");
 // });
@@ -28,18 +33,3 @@ router.post("/", (req, res) => {
 });
 
 export default router;
-
-/*
-
-9.12:
-Create a POST endpoint /api/patients for adding patients. 
-Ensure that you can add patients also from the frontend. 
-You can create unique ids of type string using the uuid library:
-import { v1 as uuid } from 'uuid'
-const id = uuid()
-
-9.13: Patientor backend, step6
-Set up safe parsing, validation and type predicate 
-to the POST /api/patients request.
-Refactor the gender field to use an enum type.
-*/
