@@ -24,7 +24,7 @@ export type Entry =
   | HospitalEntry
   | OccupationalHealthcareEntry
   | HealthCheckEntry;
-interface BaseEntry {
+export interface BaseEntry {
   id: string;
   description: string;
   date: string;
@@ -39,13 +39,19 @@ export enum HealthCheckRating {
   "CriticalRisk" = 3,
 }
 
+export enum EntryTypes {
+  HealthCheck = "HealthCheck",
+  OccupationalHealthcare = "OccupationalHealthcare",
+  Hospital = "Hospital",
+}
+
 interface HealthCheckEntry extends BaseEntry {
-  type: "HealthCheck";
+  type: EntryTypes.HealthCheck;
   healthCheckRating: HealthCheckRating;
 }
 
 interface OccupationalHealthcareEntry extends BaseEntry {
-  type: "OccupationalHealthcare";
+  type: EntryTypes.OccupationalHealthcare;
   sickLeave?: {
     startDate: string;
     endDate: string;
@@ -54,7 +60,7 @@ interface OccupationalHealthcareEntry extends BaseEntry {
 }
 
 interface HospitalEntry extends BaseEntry {
-  type: "Hospital";
+  type: EntryTypes.Hospital;
   discharge: {
     date: string;
     criteria: string;
@@ -64,6 +70,12 @@ interface HospitalEntry extends BaseEntry {
 export type NewPatient = Omit<Patient, "id">;
 export type NonSensitivePatient = Omit<Patient, "ssn" | "entries">;
 
+// Define special omit for unions
+type UnionOmit<T, K extends string | number | symbol> = T extends unknown
+  ? Omit<T, K>
+  : never;
+// Define Entry without the 'id' property
+export type NewEntry = UnionOmit<Entry, "id">;
 /*
 9.22: entry -tyyppi tehty, jatko:
 Use types properly in the backend! 
