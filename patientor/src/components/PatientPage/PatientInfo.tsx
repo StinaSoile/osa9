@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import patientService from "../../services/patients";
 import Entries from "./Entries";
+import EntryForm from "./EntryForm";
 
 // import MaleIcon from "@mui/icons-material/Male";
 // import FemaleIcon from "@mui/icons-material/Female";
@@ -28,7 +29,7 @@ const PatientInfo = ({ diagnoses }: { diagnoses: Diagnosis[] }) => {
       <div>gender: {patient?.gender}</div>
       <div>ssh: {patient?.ssn}</div>
       <div>occupation: {patient?.occupation}</div>
-
+      <EntryForm id={id} />
       <Entries patient={patient} diagnoses={diagnoses} />
     </div>
   );

@@ -1,4 +1,4 @@
-import { Entry, Diagnosis } from "../../types";
+import { Entry, Diagnosis, EntryTypes } from "../../types";
 
 interface Props {
   entry: Entry;
@@ -40,7 +40,7 @@ const EntryDetails = ({ entry, diagnoses }: Props) => {
 
   const switchEntries = () => {
     switch (entry.type) {
-      case "Hospital":
+      case EntryTypes.Hospital:
         return (
           <>
             <p>
@@ -48,7 +48,7 @@ const EntryDetails = ({ entry, diagnoses }: Props) => {
             </p>
           </>
         );
-      case "OccupationalHealthcare":
+      case EntryTypes.OccupationalHealthcare:
         return (
           <>
             <p>employer name: {entry.employerName}</p>
@@ -60,7 +60,7 @@ const EntryDetails = ({ entry, diagnoses }: Props) => {
             )}
           </>
         );
-      case "HealthCheck":
+      case EntryTypes.HealthCheck:
         return (
           <>
             <p>health check rating: {entry.healthCheckRating}</p>
