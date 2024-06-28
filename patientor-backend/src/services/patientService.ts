@@ -1,4 +1,5 @@
 import patientEntries from "../../data/patients";
+// import diagnosisData from "../../data/diagnoses";
 import { v1 as uuid } from "uuid";
 import {
   NonSensitivePatient,
@@ -37,14 +38,18 @@ const addPatient = (entry: NewPatient): Patient => {
   return newPatient;
 };
 
-const addEntry = (entry: NewEntry): Entry => {
+const addEntry = (entry: NewEntry, patientId: string): Entry => {
   const id = uuid();
   const newEntry = {
     id,
     ...entry,
   };
-  // diagnosisData.push(newEntry);
-  return newEntry;
+  const patient = patientEntries.find((p) => p.id === patientId);
+  if (patient) {
+    patient.entries.push(newEntry);
+    return newEntry;
+  }
+  throw new Error("Patient not found");
 };
 
 export default {
