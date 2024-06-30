@@ -60,12 +60,45 @@ const EntryDetails = ({ entry, diagnoses }: Props) => {
             )}
           </>
         );
-      case EntryTypes.HealthCheck:
-        return (
-          <>
-            <p>health check rating: {entry.healthCheckRating}</p>
-          </>
-        );
+      case EntryTypes.HealthCheck: {
+        switch (entry.healthCheckRating) {
+          case 0: {
+            return (
+              <>
+                <p>health check rating: Healthy</p>
+              </>
+            );
+          }
+          case 1: {
+            return (
+              <>
+                <p>health check rating: Low risk</p>
+              </>
+            );
+          }
+          case 2: {
+            return (
+              <>
+                <p>health check rating: High risk</p>
+              </>
+            );
+          }
+          case 3: {
+            return (
+              <>
+                <p>health check rating: Critical risk</p>
+              </>
+            );
+          }
+          default: {
+            return (
+              <>
+                <p>health check rating: {entry.healthCheckRating}</p>
+              </>
+            );
+          }
+        }
+      }
       default:
         return assertNever(entry);
     }

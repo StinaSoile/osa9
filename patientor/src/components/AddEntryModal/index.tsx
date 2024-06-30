@@ -14,6 +14,7 @@ interface Props {
   diagnoses: Diagnosis[];
   fetchPatient: (id: string | undefined) => Promise<void>;
   modalOpen: boolean;
+  setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   onClose: () => void;
   error?: string;
 }
@@ -23,6 +24,7 @@ const AddEntryModal = ({
   diagnoses,
   fetchPatient,
   modalOpen,
+  setModalOpen,
   onClose,
   error,
 }: Props) => (
@@ -36,6 +38,7 @@ const AddEntryModal = ({
         fetchPatient={fetchPatient}
         diagnoses={diagnoses}
         onCancel={onClose}
+        setModalOpen={setModalOpen}
       />
     </DialogContent>
   </Dialog>

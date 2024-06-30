@@ -30,11 +30,13 @@ const EntryForm = ({
   diagnoses,
   fetchPatient,
   onCancel,
+  setModalOpen,
 }: {
   id: string | undefined;
   diagnoses: Diagnosis[];
   fetchPatient: (id: string | undefined) => Promise<void>;
   onCancel: () => void;
+  setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   const [description, setDescription] = useState("");
   const [date, setDate] = useState("");
@@ -134,6 +136,7 @@ const EntryForm = ({
         setSickLeaveStartDate("");
         setSickLeaveEndDate("");
         setEmployerName("");
+        setModalOpen(false);
       } catch (e: unknown) {
         if (axios.isAxiosError(e)) {
           if (e?.response?.data && typeof e?.response?.data === "string") {
@@ -157,14 +160,7 @@ const EntryForm = ({
     <div>
       {error && <Alert severity="error">{error}</Alert>}
 
-      <form
-        style={{
-          padding: "1em 16px",
-          borderRadius: "16px",
-          border: "1px solid #000000",
-        }}
-        onSubmit={handleSubmit}
-      >
+      <form onSubmit={handleSubmit}>
         <Stack spacing={2}>
           <FormControl>
             <FormLabel required id="demo-row-radio-buttons-group-label">

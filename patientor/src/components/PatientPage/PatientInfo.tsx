@@ -45,18 +45,13 @@ const PatientInfo = ({ diagnoses }: { diagnoses: Diagnosis[] }) => {
         fetchPatient={fetchPatient}
         diagnoses={diagnoses}
         modalOpen={modalOpen}
+        setModalOpen={setModalOpen}
         error={error}
         onClose={closeModal}
       />
       <Button variant="contained" onClick={() => openModal()}>
         Add New Entry
       </Button>
-      {/* <EntryForm
-        id={id}
-        fetchPatient={fetchPatient}
-        diagnoses={diagnoses}
-        onCancel={closeModal}
-      /> */}
       <Entries patient={patient} diagnoses={diagnoses} />
     </div>
   );
